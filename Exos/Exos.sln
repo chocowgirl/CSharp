@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exo_9Oct2024", "Exo_9Oct202
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exosFinJour_9Oct2024", "exosFinJour_9Oct2024\exosFinJour_9Oct2024.csproj", "{F6A4DA1A-BEC0-49DB-B292-BC93497C13C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exos FinJour_10Oct2024", "exos FinJour_10Oct2024\exos FinJour_10Oct2024.csproj", "{A27CDDA0-5133-452E-8713-27B1313D3E00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exos FinJour_10Oct2024", "exos FinJour_10Oct2024\exos FinJour_10Oct2024.csproj", "{A27CDDA0-5133-452E-8713-27B1313D3E00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exos lunch_14Oct2024- table, array, list dictionary", "Exos lunch_14Oct2024- table, array, list dictionary\Exos lunch_14Oct2024- table, array, list dictionary.csproj", "{65D7B93A-62FD-408A-892D-5DA044DD128A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A27CDDA0-5133-452E-8713-27B1313D3E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A27CDDA0-5133-452E-8713-27B1313D3E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A27CDDA0-5133-452E-8713-27B1313D3E00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65D7B93A-62FD-408A-892D-5DA044DD128A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65D7B93A-62FD-408A-892D-5DA044DD128A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65D7B93A-62FD-408A-892D-5DA044DD128A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65D7B93A-62FD-408A-892D-5DA044DD128A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
