@@ -246,11 +246,11 @@ namespace Exos_lunch_14Oct2024__table__array__list_dictionary
             Random rnd = new Random();
             int ordiChoice = rnd.Next(1, 4);
             int userChoice;
-            //Console.WriteLine(ordiChoice);
+            Console.WriteLine(ordiChoice);
             do
             {
                 ordiChoice = rnd.Next(1, 4);
-                Console.WriteLine(ordiChoice);
+                //Console.WriteLine(ordiChoice);
                 Console.WriteLine("Enter one of the following: 1 (for ROCK), 2 (for PAPER), or 3 (for SCISSORS).  Enter 4 to quit.");
                 bool userChoiceParsable = int.TryParse(Console.ReadLine(), out userChoice);
                 if (userChoiceParsable && userChoice != 4)
