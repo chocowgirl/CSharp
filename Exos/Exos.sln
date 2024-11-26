@@ -17,9 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exo1_struct_13Nov2024", "Ex
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exo2_structs_13nov2024", "Exo 2 (structs) 13nov2024\Exo2_structs_13nov2024.csproj", "{A86DC69D-BD9B-4DFB-B175-2C8FA042E711}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExoCelFarStructs25Nov2024", "ConsoleApp1\ExoCelFarStructs25Nov2024.csproj", "{EABF26F9-9214-4E43-844A-46FCDD005890}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExoCelFarStructs25Nov2024", "ConsoleApp1\ExoCelFarStructs25Nov2024.csproj", "{EABF26F9-9214-4E43-844A-46FCDD005890}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExoDistribBoiss", "ExoDistribBoiss\ExoDistribBoiss.csproj", "{C08BB37E-FEFC-4D95-BFC8-8EEBE048FC50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExoDistribBoiss", "ExoDistribBoiss\ExoDistribBoiss.csproj", "{C08BB37E-FEFC-4D95-BFC8-8EEBE048FC50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExoTechnicolor26Nov2024", "ExoFinJour26Nov2024\ExoTechnicolor26Nov2024.csproj", "{DE09D74B-74CE-42DB-9115-E8E6190EF74C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExoCardDeck26Nov2024", "ExoCardDeck26Nov2024\ExoCardDeck26Nov2024.csproj", "{F01A0442-8B3E-4C2B-A09C-F66F6387A77F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +67,14 @@ Global
 		{C08BB37E-FEFC-4D95-BFC8-8EEBE048FC50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C08BB37E-FEFC-4D95-BFC8-8EEBE048FC50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C08BB37E-FEFC-4D95-BFC8-8EEBE048FC50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE09D74B-74CE-42DB-9115-E8E6190EF74C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE09D74B-74CE-42DB-9115-E8E6190EF74C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE09D74B-74CE-42DB-9115-E8E6190EF74C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE09D74B-74CE-42DB-9115-E8E6190EF74C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F01A0442-8B3E-4C2B-A09C-F66F6387A77F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F01A0442-8B3E-4C2B-A09C-F66F6387A77F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F01A0442-8B3E-4C2B-A09C-F66F6387A77F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F01A0442-8B3E-4C2B-A09C-F66F6387A77F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
