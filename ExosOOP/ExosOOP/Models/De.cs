@@ -8,8 +8,11 @@ namespace ExosOOPMonopoly.Models
 {
     public static class De
     {
+
         private static int _valeurMin = 1;
         private static int _valeurMax = 6;
+        private static Random _rng = new Random(); //new is used for types, but not for variables (int is a primitive type)
+        //could also initialise the _rng in the Property below, starting with if _rng is null, new Random() ***VERIFY THIS
 
         public static int ValeurMin //guardian/filter of _valeurMin
         {
@@ -19,14 +22,15 @@ namespace ExosOOPMonopoly.Models
             }
             set
             {
-                if (value <= 0) return;
+                if (value <= 0) return; // mieux de gerer l'exception but we haven't learned this yet
+                _valeurMin = value;
                 if (value >= _valeurMax)
                 {
                     _valeurMax = value + 1;
                 }
-                _valeurMin = value;
             }
         }
+
 
 
         public static int ValeurMax //guardian/filter of _valeurMax
@@ -37,7 +41,8 @@ namespace ExosOOPMonopoly.Models
             }
             set
             {
-                if (value < 1) return;
+                if (value <= 1) return;
+                _valeurMax = value;
                 if (value <= _valeurMin)
                 {
                     _valeurMin = value - 1;
@@ -45,8 +50,6 @@ namespace ExosOOPMonopoly.Models
             }
         }
 
-
-        public static Random rng = new Random(); //new is used for types, but not for variables (int is a primitive type
 
 
         public static int[] Lancer(int nbDes)
@@ -59,7 +62,7 @@ namespace ExosOOPMonopoly.Models
             int[]chiffres = new int[nbDes];
             
             for (int i=0; i<nbDes; i++) {
-                chiffres[i] = rng.Next(ValeurMin,ValeurMax+1);
+                chiffres[i] = _rng.Next(ValeurMin,ValeurMax+1);
             }
             return chiffres;
         }

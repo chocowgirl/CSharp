@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35431.28
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEMO1OOP Namespace", "DEMO1OOP Namespace\DEMO1OOP Namespace.csproj", "{C622316C-D199-4F37-819D-4A95C249A892}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DEMO1OOP Namespace", "DEMO1OOP Namespace\DEMO1OOP Namespace.csproj", "{C622316C-D199-4F37-819D-4A95C249A892}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo2Static", "Demo2Static\Demo2Static.csproj", "{87D6186E-C219-4D2D-ACCC-299D08D0CDAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo2Static", "Demo2Static\Demo2Static.csproj", "{87D6186E-C219-4D2D-ACCC-299D08D0CDAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo3Encapsulation", "Demo3Encapsulation\Demo3Encapsulation.csproj", "{859F86D4-73CE-40E5-BA4B-A84B853D29C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo3Encapsulation", "Demo3Encapsulation\Demo3Encapsulation.csproj", "{859F86D4-73CE-40E5-BA4B-A84B853D29C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo4Constructor", "Demo4Constructor\Demo4Constructor.csproj", "{0FC368B4-ED1B-4DE0-A085-FA63DB89552F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{859F86D4-73CE-40E5-BA4B-A84B853D29C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{859F86D4-73CE-40E5-BA4B-A84B853D29C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{859F86D4-73CE-40E5-BA4B-A84B853D29C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FC368B4-ED1B-4DE0-A085-FA63DB89552F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FC368B4-ED1B-4DE0-A085-FA63DB89552F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FC368B4-ED1B-4DE0-A085-FA63DB89552F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FC368B4-ED1B-4DE0-A085-FA63DB89552F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
