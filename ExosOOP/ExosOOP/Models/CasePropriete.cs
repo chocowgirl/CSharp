@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ExosOOPMonopoly.Models
 {
-    public class CasePropriete
+    public class CasePropriete : Case 
     {
-        public string Nom {  get; }// autoproperty
+        //public string Nom {  get; }// autoproperty  - removed because this class is a child of Case which contains name already
 
         //complete version below (only if verif of entering and leaving data)
         //private string _nom;
@@ -27,9 +27,9 @@ namespace ExosOOPMonopoly.Models
 
         public Joueur Proprietaire { get; private set; }
 
-        public CasePropriete(string name, Couleurs colour, int price)
+        public CasePropriete(string name, Couleurs colour, int price) : base (name)
         {
-            Nom = name;
+            //Nom = name; //commented out after making CasePropriete a child of Case
             Couleur = colour;
             Prix = price;
             //EstHypoteqee = false; // false is the default value for this so it's not needed
@@ -37,7 +37,7 @@ namespace ExosOOPMonopoly.Models
         }
 
 
-        public void Acheter(Joueur acheteur)
+        private void Acheter(Joueur acheteur)
         {
             if (acheteur is null) return;  // goal is to leave as soon as possible, so manage the situations where it DOESN'T work first.
             if (Proprietaire == acheteur) return;  //later these returns s/b handled with exceptions
@@ -48,6 +48,22 @@ namespace ExosOOPMonopoly.Models
             acheteur.AjouterPropriete(this);
         }
 
+        private void Sejourner(Joueur visiteur)
+        {
+            visiteur.Payer(Prix/4);
+        }
 
+        public override void Activer(Joueur visiteur)
+        {
+            if (Proprietaire is null)
+            {
+                Acheter(visiteur);
+            }
+            if (Proprietaire == visiteur) return;
+            if (!(Proprietaire == visiteur))
+            {
+                Sejourner (visiteur);
+            }
+        }
     }
 }

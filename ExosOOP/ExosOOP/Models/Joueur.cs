@@ -22,6 +22,8 @@ namespace ExosOOPMonopoly.Models
 
         public Joueur(string name, Pions pion)
         {
+            Nom = name;
+            Pion = pion;
             Solde = 1500;
             _position = 0;//pas besoin d'initialiser ici car le defaut value of the int is 0
             _proprietes = new List<CasePropriete>();
@@ -85,6 +87,22 @@ namespace ExosOOPMonopoly.Models
             if (Proprietes.Contains(bien)) return; //To avoid the possibility of buying the same property twice.
             if (bien.Proprietaire == this) _proprietes.Add(bien);
         }
+
+
+        public static Joueur operator +(Joueur left, int right)
+        {
+            //left.Solde += right;
+            //return left;
+            left.EtrePaye(right); //this way includes the verification that is made in EtrePaye()
+            return left;
+        }
+
+
+        //public static CasePropriete[] operator +(Joueur left, CasePropriete right)
+        //{
+        //    right.Acheter(left);
+        //    return left.Proprietes;
+        //}
 
     }
 }
