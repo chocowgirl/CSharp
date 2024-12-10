@@ -61,7 +61,7 @@ namespace ExosOOPMonopoly
             //    Console.WriteLine($"\t- {bien.Nom} ({bien.Couleur})");
             //}
 
-            //$$$$test de la classe Jeu$$$$$
+            //$$$$$$$ test de la classe Jeu $$$$$
             Jeu monopolyI3 = new Jeu(
                 [
                     new CasePropriete("Patio", Couleurs.Marron, 20),
@@ -79,60 +79,95 @@ namespace ExosOOPMonopoly
             monopolyI3.AjouterJoueur("Dorothee", Pions.Voiture);
             monopolyI3.AjouterJoueur("Leslie", Pions.Chien);
             monopolyI3.AjouterJoueur("Melusine", Pions.DeACoudre);
-            monopolyI3.AjouterJoueur("Emilie", Pions.Cuirasse);
-            monopolyI3.AjouterJoueur("Jessica", Pions.Fer);
-            monopolyI3.AjouterJoueur("Charifa", Pions.Chapeau);
-            monopolyI3.AjouterJoueur("Anais", Pions.Brouette);
-            monopolyI3.AjouterJoueur("Jenny", Pions.Chaussure);
-            monopolyI3.AjouterJoueur("Amalia", Pions.Chien);
-            monopolyI3.AjouterJoueur("Debby", Pions.Dino);
+            // For now we'll not use all the players
+            //monopolyI3.AjouterJoueur("Emilie", Pions.Cuirasse);
+            //monopolyI3.AjouterJoueur("Jessica", Pions.Fer);
+            //monopolyI3.AjouterJoueur("Charifa", Pions.Chapeau);
+            //monopolyI3.AjouterJoueur("Anais", Pions.Brouette);
+            //monopolyI3.AjouterJoueur("Jenny", Pions.Chaussure);
+            //monopolyI3.AjouterJoueur("Amalia", Pions.Chien);
+            //monopolyI3.AjouterJoueur("Debby", Pions.Dino);
 
-            Joueur joueurCourant = monopolyI3[Pions.Chapeau];
-            joueurCourant = joueurCourant + 200;
-            Console.WriteLine($"C'est au tour de pion {joueurCourant.Pion} ({joueurCourant.Nom}):");
-            
-            joueurCourant.Avancer();
-            Console.WriteLine($"{joueurCourant.Nom} avancer à la case {joueurCourant.Position}.");
-            Case caseJoueur = monopolyI3[joueurCourant.Position];
-            Console.WriteLine($"Bienvenue sur la case {caseJoueur.Nom}.");
+            //Joueur joueurCourant = monopolyI3[Pions.Chapeau];
+            //joueurCourant = joueurCourant + 200;
+            //Console.WriteLine($"C'est au tour de pion {joueurCourant.Pion} ({joueurCourant.Nom}):");
 
-            //caseJoueur.Acheter(joueurCourant);
+            //joueurCourant.Avancer();
+            //Console.WriteLine($"{joueurCourant.Nom} avancer à la case {joueurCourant.Position}.");
+            //Case caseJoueur = monopolyI3[joueurCourant.Position];
+            //Console.WriteLine($"Bienvenue sur la case {caseJoueur.Nom}.");
 
-            if( caseJoueur is CasePropriete)
-            {
-                CasePropriete propriete = (CasePropriete)caseJoueur;
-                CasePropriete[] proprietesJoueur = joueurCourant + propriete;
-                Console.WriteLine($"{joueurCourant.Nom}: votre solde est de {joueurCourant.Solde}!");
-            }
+            ////caseJoueur.Acheter(joueurCourant);
 
-            //The above can be written as:
-            //if (caseJoueur is CasePropriete propriete)
-            //{ 
-            //    Case
+            //if( caseJoueur is CasePropriete)
+            //{
+            //    CasePropriete propriete = (CasePropriete)caseJoueur;
+            //    CasePropriete[] proprietesJoueur = joueurCourant + propriete;
+            //    Console.WriteLine($"{joueurCourant.Nom}: votre solde est de {joueurCourant.Solde}!");
             //}
 
+            ////The above can be written as:
+            ////if (caseJoueur is CasePropriete propriete)
+            ////{ 
+            ////    Case
+            ////}
 
 
-            //Test Case et case propriete:
-            Case caseDepart = new Case("Case départ");
 
-            CasePropriete prop1 = new CasePropriete("Prop1", Couleurs.Marron, 20);
+            ////$$$$$$$$$$Test Case et case propriete: $$$$$$$$$$$$
+            //Case caseDepart = new Case("Case départ");
 
-            caseDepart.AjouterVisiteur(joueurCourant);
-            caseDepart.AjouterVisiteur(monopolyI3[Pions.Dino]);
-            Console.WriteLine($"les joueurs present sur la {caseDepart.Nom} sont:");
-            foreach (Joueur visiteur in caseDepart.Visiteurs)
+            //CasePropriete prop1 = new CasePropriete("Prop1", Couleurs.Marron, 20);
+
+            //caseDepart.AjouterVisiteur(joueurCourant);
+            //caseDepart.AjouterVisiteur(monopolyI3[Pions.Dino]);
+            //Console.WriteLine($"les joueurs present sur la {caseDepart.Nom} sont:");
+            //foreach (Joueur visiteur in caseDepart.Visiteurs)
+            //{
+            //    Console.WriteLine($"\t- {visiteur.Pion} ({visiteur.Nom})");
+            //}
+
+            //caseDepart.RetirerVisiteur(joueurCourant);
+            //prop1.AjouterVisiteur(joueurCourant);
+            //Console.WriteLine($"Les joueurs présent sur la {prop1.Nom} sont:");
+            //foreach(Joueur visiteur in prop1.Visiteurs)
+            //{
+            //    Console.WriteLine($"\t- {visiteur.Pion} ({visiteur.Nom})");
+            //}
+            int nbJoueursSolvable = 0;
+            foreach (Joueur j in monopolyI3.Joueurs)
             {
-                Console.WriteLine($"\t- {visiteur.Pion} ({visiteur.Nom})");
+                if(j.Solde > 0) nbJoueursSolvable++;
             }
 
-            caseDepart.RetirerVisiteur(joueurCourant);
-            prop1.AjouterVisiteur(joueurCourant);
-            Console.WriteLine($"Les joueurs présent sur la {prop1.Nom} sont:");
-            foreach(Joueur visiteur in prop1.Visiteurs)
+            int indexJoueur = 0;
+
+            while (nbJoueursSolvable > 1)
             {
-                Console.WriteLine($"\t- {visiteur.Pion} ({visiteur.Nom})");
+                Joueur joueurCourant = monopolyI3.Joueurs[indexJoueur % monopolyI3.Joueurs.Length];
+                Console.WriteLine($"Au tour de {joueurCourant.Nom}.");
+                bool rejoue;
+                do
+                {
+                    Case caseCourante = monopolyI3[joueurCourant.Position];
+                    Console.WriteLine($"Il est actuellement sur la case {monopolyI3[joueurCourant.Position].Nom}."); 
+                    caseCourante.RetirerVisiteur(joueurCourant);
+                    rejoue = joueurCourant.Avancer();
+                    caseCourante = monopolyI3[joueurCourant.Position];
+                    Console.WriteLine($"Il se deplace sur la case {caseCourante.Nom}.");
+                    caseCourante.AjouterVisiteur(joueurCourant);
+                    caseCourante.Activer(joueurCourant);
+                    Console.WriteLine($"le nombre de propriété de {joueurCourant.Nom} est de {joueurCourant.Proprietes.Length}");
+                    Console.WriteLine($"son solde actuel est de {joueurCourant.Solde} $Monopoly.");
+                }while( rejoue);
+                nbJoueursSolvable = 0;
+                foreach (Joueur j in monopolyI3.Joueurs)
+                {
+                    if(j.Solde > 0)nbJoueursSolvable++;
+                }
+                indexJoueur++;
             }
+
 
         }
     }

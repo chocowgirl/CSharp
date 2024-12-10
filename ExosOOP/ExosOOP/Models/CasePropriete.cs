@@ -50,20 +50,26 @@ namespace ExosOOPMonopoly.Models
 
         private void Sejourner(Joueur visiteur)
         {
-            visiteur.Payer(Prix/4);
+            if(visiteur is null) return; //Handle with an exception
+            if(Proprietaire is null) return; //Handle with an exception
+            if(Proprietaire == visiteur) return; //Handle with an exception
+            int rent = Prix / 4;
+            visiteur.Payer(rent);
+            Proprietaire.EtrePaye(rent);
         }
 
         public override void Activer(Joueur visiteur)
         {
+            if (visiteur is null) return; //Handle with exception
             if (Proprietaire is null)
             {
                 Acheter(visiteur);
             }
-            if (Proprietaire == visiteur) return;
-            if (!(Proprietaire == visiteur))
+            else if (!(Proprietaire == visiteur))
             {
-                Sejourner (visiteur);
+                Sejourner(visiteur);
             }
+            //if (Proprietaire == visiteur) return;
         }
     }
 }

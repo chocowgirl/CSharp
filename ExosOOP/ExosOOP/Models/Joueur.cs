@@ -70,7 +70,7 @@ namespace ExosOOPMonopoly.Models
 
         public void EtrePaye(int montant)
         {
-            if (montant >= 0) return;
+            if (montant >= 0) return; //handle with an exception
             Solde += montant;
         }
 
@@ -102,7 +102,8 @@ namespace ExosOOPMonopoly.Models
         //{
         //    right.Acheter(left);
         //    return left.Proprietes;
-        //}
+        //}  
+        // This overloaded operator becomes obsolete/impossible because we protected Acheter() as a private method
 
     }
 }
