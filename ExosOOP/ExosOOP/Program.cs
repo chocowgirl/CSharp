@@ -77,9 +77,8 @@ namespace ExosOOPMonopoly
 
             monopolyI3.AjouterJoueur("Marwa", Pions.Dino);
             monopolyI3.AjouterJoueur("Dorothee", Pions.Voiture);
-            monopolyI3.AjouterJoueur("Leslie", Pions.Chien);
-            monopolyI3.AjouterJoueur("Melusine", Pions.DeACoudre);
-            // For now we'll not use all the players
+            //monopolyI3.AjouterJoueur("Leslie", Pions.Chien);
+            //monopolyI3.AjouterJoueur("Melusine", Pions.DeACoudre);
             //monopolyI3.AjouterJoueur("Emilie", Pions.Cuirasse);
             //monopolyI3.AjouterJoueur("Jessica", Pions.Fer);
             //monopolyI3.AjouterJoueur("Charifa", Pions.Chapeau);
@@ -146,9 +145,47 @@ namespace ExosOOPMonopoly
             {
                 Joueur joueurCourant = monopolyI3.Joueurs[indexJoueur % monopolyI3.Joueurs.Length];
                 Console.WriteLine($"Au tour de {joueurCourant.Nom}.");
+                if (joueurCourant.Proprietes.Length > 0)
+                {
+                    int choix;
+                    do
+                    {
+                        Console.WriteLine($"voulez-vous effectuer une action sur un de vos {joueurCourant.Proprietes.Length} biens?");
+                        for (int i = 0; i < joueurCourant.Proprietes.Length; i++)
+                        {
+                            CasePropriete prop = joueurCourant.Proprietes[i];
+                            if (prop.EstHypotequee)
+                            {
+                                Console.BackgroundColor = ConsoleColor.DarkRed;
+                                Console.ForegroundColor = ConsoleColor.White;
+                            }
+                            Console.WriteLine($"{i + 1} - {prop.Nom} ({prop.Couleur}, {prop.Prix}$M) ");
+                            Console.ResetColor();
+                        }
+                        do
+                        {
+                            Console.WriteLine($"Entrez la numéro du bien pour changer son status d'hypotheque, ou alors entrer 0 pour jouer votre tour."); 
+                        } while (!int.TryParse(Console.ReadLine(), out choix) || choix < 0 || choix > joueurCourant.Proprietes.Length);
+                        
+                        if (choix != 0)
+                        {
+                            IProprietaire propChoisi = joueurCourant.Proprietes[choix-1];
+                            if (propChoisi.EstHypotequee)
+                            {
+                                propChoisi.Deshypothequer();
+                            }
+                            else
+                            {
+                                propChoisi.Hypothequer();
+                            }
+                        }
+                    } while (choix !=0);
+                }
+
                 bool rejoue;
                 do
                 {
+
                     Case caseCourante = monopolyI3[joueurCourant.Position];
                     Console.WriteLine($"Il est actuellement sur la case {monopolyI3[joueurCourant.Position].Nom}."); 
                     caseCourante.RetirerVisiteur(joueurCourant);
@@ -156,6 +193,7 @@ namespace ExosOOPMonopoly
                     caseCourante = monopolyI3[joueurCourant.Position];
                     Console.WriteLine($"Il se deplace sur la case {caseCourante.Nom}.");
                     caseCourante.AjouterVisiteur(joueurCourant);
+                    IVisiteur caseVisitee = caseCourante;
                     caseCourante.Activer(joueurCourant);
                     Console.WriteLine($"le nombre de propriété de {joueurCourant.Nom} est de {joueurCourant.Proprietes.Length}");
                     Console.WriteLine($"son solde actuel est de {joueurCourant.Solde} $Monopoly.");

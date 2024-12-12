@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ExosOOPMonopoly.Models
 {
-    public abstract class Case
+    public abstract class Case : IVisiteur
     {
         private List<Joueur> _visiteurs;// = new List<Joueur>();
 

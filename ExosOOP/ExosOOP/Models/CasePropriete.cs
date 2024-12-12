@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExosOOPMonopoly.Models
 {
-    public class CasePropriete : Case 
+    public class CasePropriete : Case, IProprietaire
     {
         //public string Nom {  get; }// autoproperty  - removed because this class is a child of Case which contains name already
 
@@ -23,11 +23,11 @@ namespace ExosOOPMonopoly.Models
 
         public int Prix { get; }
 
-        public bool EstHypoteqee { get; }
+        public bool EstHypotequee { get; private set; }
 
         public Joueur Proprietaire { get; private set; }
 
-        public CasePropriete(string name, Couleurs colour, int price) : base (name)
+        public CasePropriete(string name, Couleurs colour, int price) : base(name)
         {
             //Nom = name; //commented out after making CasePropriete a child of Case
             Couleur = colour;
@@ -71,5 +71,25 @@ namespace ExosOOPMonopoly.Models
             }
             //if (Proprietaire == visiteur) return;
         }
+
+        public void Hypothequer()
+        {
+            if(EstHypotequee)return; //Handle with exception
+            Proprietaire.EtrePaye(Prix / 2);
+            EstHypotequee = true;
+        }
+
+        public void Deshypothequer()
+        {
+            if(!EstHypotequee)return; //Handle w exception
+            int currentSolde = Proprietaire.Solde;
+            Proprietaire.Payer((int)(Prix * 0.6));
+            if(currentSolde != Proprietaire.Solde) //making sure the player is able to pay to reput the property on the market
+            {
+                EstHypotequee = false;
+            }
+
+        }
+
     }
 }
