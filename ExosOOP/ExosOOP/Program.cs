@@ -64,26 +64,26 @@ namespace ExosOOPMonopoly
             //$$$$$$$ test de la classe Jeu $$$$$
             Jeu monopolyI3 = new Jeu(
                 [
-                    new CasePropriete("Patio", Couleurs.Marron, 20),
-                    new CasePropriete("RDC Bat G", Couleurs.Marron, 20),
-                    new CasePropriete("RDC Bat D", Couleurs.Marron, 22),
-                    new CasePropriete("Ascen Bat D", Couleurs.BleuCiel, 26),
-                    new CasePropriete("Ascen Bat G", Couleurs.BleuCiel, 26),
-                    new CasePropriete("Toilette RDC", Couleurs.BleuCiel, 28),
-                    new CasePropriete("Classe Unity", Couleurs.Violet, 32),
-                    new CasePropriete("Classe Web", Couleurs.Violet, 32),
-                    new CasePropriete("Classe Wad", Couleurs.Violet, 36),
+                    new CasePropriete("Patio", Couleurs.Marron, 200),
+                    new CasePropriete("RDC Bat G", Couleurs.Marron, 200),
+                    new CasePropriete("RDC Bat D", Couleurs.Marron, 220),
+                    new CasePropriete("Ascen Bat D", Couleurs.BleuCiel, 260),
+                    new CasePropriete("Ascen Bat G", Couleurs.BleuCiel, 260),
+                    new CasePropriete("Toilette RDC", Couleurs.BleuCiel, 280),
+                    new CasePropriete("Classe Unity", Couleurs.Violet, 320),
+                    new CasePropriete("Classe Web", Couleurs.Violet, 320),
+                    new CasePropriete("Classe Wad", Couleurs.Violet, 360),
                 ]);
 
             monopolyI3.AjouterJoueur("Marwa", Pions.Dino);
             monopolyI3.AjouterJoueur("Dorothee", Pions.Voiture);
-            //monopolyI3.AjouterJoueur("Leslie", Pions.Chien);
-            //monopolyI3.AjouterJoueur("Melusine", Pions.DeACoudre);
-            //monopolyI3.AjouterJoueur("Emilie", Pions.Cuirasse);
-            //monopolyI3.AjouterJoueur("Jessica", Pions.Fer);
-            //monopolyI3.AjouterJoueur("Charifa", Pions.Chapeau);
-            //monopolyI3.AjouterJoueur("Anais", Pions.Brouette);
-            //monopolyI3.AjouterJoueur("Jenny", Pions.Chaussure);
+            monopolyI3.AjouterJoueur("Leslie", Pions.Chien);
+            monopolyI3.AjouterJoueur("Melusine", Pions.DeACoudre);
+            monopolyI3.AjouterJoueur("Emilie", Pions.Cuirasse);
+            monopolyI3.AjouterJoueur("Jessica", Pions.Fer);
+            monopolyI3.AjouterJoueur("Charifa", Pions.Chapeau);
+            monopolyI3.AjouterJoueur("Anais", Pions.Brouette);
+            monopolyI3.AjouterJoueur("Jenny", Pions.Chaussure);
             //monopolyI3.AjouterJoueur("Amalia", Pions.Chien);
             //monopolyI3.AjouterJoueur("Debby", Pions.Dino);
 
@@ -194,7 +194,19 @@ namespace ExosOOPMonopoly
                     Console.WriteLine($"Il se deplace sur la case {caseCourante.Nom}.");
                     caseCourante.AjouterVisiteur(joueurCourant);
                     IVisiteur caseVisitee = caseCourante;
-                    caseCourante.Activer(joueurCourant);
+                    try
+                    {
+                        caseVisitee.Activer(joueurCourant);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.BackgroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine(ex.Message);
+                        Console.ResetColor();
+                        Console.Beep(1000, 2000);
+                    }
+
                     Console.WriteLine($"le nombre de propriété de {joueurCourant.Nom} est de {joueurCourant.Proprietes.Length}");
                     Console.WriteLine($"son solde actuel est de {joueurCourant.Solde} $Monopoly.");
                 }while( rejoue);

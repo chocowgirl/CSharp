@@ -1,4 +1,5 @@
 ﻿using ExosOOPMonopoly.Enums;
+using ExosOOPMonopoly.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,9 +42,18 @@ namespace ExosOOPMonopoly.Models
         {
             if (acheteur is null) return;  // goal is to leave as soon as possible, so manage the situations where it DOESN'T work first.
             if (Proprietaire == acheteur) return;  //later these returns s/b handled with exceptions
-            if (acheteur.Solde < Prix) return;  //later handle exception
+            //bc an exception can be thrown by the method Jouer.Payer(int montant) it is no longer necessary to check the solde
+            //if (acheteur.Solde < Prix)
+
             if (acheteur.Solde >= Prix)
-            acheteur.Payer(Prix);
+                try
+                {
+                    acheteur.Payer(Prix);
+                }
+                catch (NotEnoughMoneyException ex)
+                {
+                    throw new NotEnoughMoneyException(ex.Payeur, ex.Montant, this);
+                }
             Proprietaire = acheteur;
             acheteur.AjouterPropriete(this);
         }
@@ -63,7 +73,14 @@ namespace ExosOOPMonopoly.Models
             if (visiteur is null) return; //Handle with exception
             if (Proprietaire is null)
             {
-                Acheter(visiteur);
+                try { 
+                    Acheter(visiteur); 
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                
             }
             else if (!(Proprietaire == visiteur))
             {

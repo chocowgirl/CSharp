@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ExosOOPMonopoly.Enums;
+using ExosOOPMonopoly.Exceptions;
 
 namespace ExosOOPMonopoly.Models
 {
@@ -77,7 +78,10 @@ namespace ExosOOPMonopoly.Models
         public void Payer(int montant)
         {
             if (montant <= 0) return;
-            if (Solde < montant) return;
+            if (Solde < montant)
+            {
+                throw new NotEnoughMoneyException(this, montant);
+            };
             Solde -= montant;
         }
 
