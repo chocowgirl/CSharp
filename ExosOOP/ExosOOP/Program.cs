@@ -64,11 +64,27 @@ namespace ExosOOPMonopoly
             //$$$$$$$ test de la classe Jeu $$$$$
             Jeu monopolyI3 = new Jeu(
                 [
+                    new CaseAction("Case départ", delegate(Joueur visiteur){
+                        visiteur.EtrePaye(200);
+                        return true;
+                    }),
                     new CasePropriete("Patio", Couleurs.Marron, 200),
                     new CasePropriete("RDC Bat G", Couleurs.Marron, 200),
+                    new CaseAction("Duplicata carte magnétique", delegate(Joueur visiteur){
+                        try
+                        {
+                            visiteur.Payer(100);
+                            return true;
+                        }
+                        catch (Exception)
+                        {
+		                    return false;
+                        }
+                    }),
                     new CasePropriete("RDC Bat D", Couleurs.Marron, 220),
                     new CasePropriete("Ascen Bat D", Couleurs.BleuCiel, 260),
                     new CasePropriete("Ascen Bat G", Couleurs.BleuCiel, 260),
+                    new CaseAction("Femme de ménage bloque le passage", null),
                     new CasePropriete("Toilette RDC", Couleurs.BleuCiel, 280),
                     new CasePropriete("Classe Unity", Couleurs.Violet, 320),
                     new CasePropriete("Classe Web", Couleurs.Violet, 320),
@@ -77,13 +93,13 @@ namespace ExosOOPMonopoly
 
             monopolyI3.AjouterJoueur("Marwa", Pions.Dino);
             monopolyI3.AjouterJoueur("Dorothee", Pions.Voiture);
-            monopolyI3.AjouterJoueur("Leslie", Pions.Chien);
-            monopolyI3.AjouterJoueur("Melusine", Pions.DeACoudre);
-            monopolyI3.AjouterJoueur("Emilie", Pions.Cuirasse);
-            monopolyI3.AjouterJoueur("Jessica", Pions.Fer);
-            monopolyI3.AjouterJoueur("Charifa", Pions.Chapeau);
-            monopolyI3.AjouterJoueur("Anais", Pions.Brouette);
-            monopolyI3.AjouterJoueur("Jenny", Pions.Chaussure);
+            //monopolyI3.AjouterJoueur("Leslie", Pions.Chien);
+            //monopolyI3.AjouterJoueur("Melusine", Pions.DeACoudre);
+            //monopolyI3.AjouterJoueur("Emilie", Pions.Cuirasse);
+            //monopolyI3.AjouterJoueur("Jessica", Pions.Fer);
+            //monopolyI3.AjouterJoueur("Charifa", Pions.Chapeau);
+            //monopolyI3.AjouterJoueur("Anais", Pions.Brouette);
+            //monopolyI3.AjouterJoueur("Jenny", Pions.Chaussure);
             //monopolyI3.AjouterJoueur("Amalia", Pions.Chien);
             //monopolyI3.AjouterJoueur("Debby", Pions.Dino);
 
