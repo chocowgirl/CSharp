@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace ExosOOPMonopoly.Models
 {
-    public delegate bool CaseDelegate(Joueur visiteur);
-
+    //public delegate bool CaseDelegate(Joueur visiteur); //this is replaced by Func<Joueur, bool> in the code
+    
 
     public class CaseAction : Case
     {
-        private CaseDelegate _action;
+        private Func<Joueur, bool> _action;
 
-        public CaseAction(string nom, CaseDelegate action) : base(nom)
+        public CaseAction(string nom, Func<Joueur, bool> action) : base(nom)
         {
             _action = action;
         }

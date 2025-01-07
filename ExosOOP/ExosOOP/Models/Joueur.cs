@@ -8,8 +8,12 @@ using ExosOOPMonopoly.Exceptions;
 
 namespace ExosOOPMonopoly.Models
 {
+    //public delegate void JoueurAvanceDelegate(Joueur joueurSender);
+    //Action<Joueur> //this line will replace the above "JoueurAvanceDelegate"
     public class Joueur
     {
+        public event Action<Joueur> JoueurAvanceEvent;
+
         private int _position;
         private List<CasePropriete> _proprietes; // list b/c as we play we can add properties as we buy them... BUT we don't want this to be accessible directly, so we make this readable by creating the autoproperty
 
@@ -47,7 +51,11 @@ namespace ExosOOPMonopoly.Models
             } 
             private set
             {
-                _position = value;
+                if (_position != value)
+                {
+                    _position = value;
+                    JoueurAvanceEvent?.Invoke(this);
+                }
             }
         }
 

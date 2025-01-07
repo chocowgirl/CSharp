@@ -61,9 +61,16 @@ namespace ExosOOPMonopoly.Models
         {
             if (nom is null) return; //Handle later with an exception
             if (this[pion] is not null) return; //Handle later with an exception
-            _joueurs.Add(new Joueur(nom, pion));
+            Joueur nouveauJoueur = new Joueur(nom, pion);
+            _joueurs.Add(nouveauJoueur);
+            nouveauJoueur.JoueurAvanceEvent += JoueurAvanceAction;
+
         }
 
+        public void JoueurAvanceAction(Joueur joueur)
+        {
+            this[joueur.Position].Activer(joueur);
+        }
 
     }
 }

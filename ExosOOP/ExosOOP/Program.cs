@@ -201,18 +201,12 @@ namespace ExosOOPMonopoly
                 bool rejoue;
                 do
                 {
-
                     Case caseCourante = monopolyI3[joueurCourant.Position];
                     Console.WriteLine($"Il est actuellement sur la case {monopolyI3[joueurCourant.Position].Nom}."); 
                     caseCourante.RetirerVisiteur(joueurCourant);
-                    rejoue = joueurCourant.Avancer();
-                    caseCourante = monopolyI3[joueurCourant.Position];
-                    Console.WriteLine($"Il se deplace sur la case {caseCourante.Nom}.");
-                    caseCourante.AjouterVisiteur(joueurCourant);
-                    IVisiteur caseVisitee = caseCourante;
                     try
                     {
-                        caseVisitee.Activer(joueurCourant);
+                        rejoue = joueurCourant.Avancer();
                     }
                     catch (Exception ex)
                     {
@@ -221,8 +215,12 @@ namespace ExosOOPMonopoly
                         Console.WriteLine(ex.Message);
                         Console.ResetColor();
                         Console.Beep(1000, 2000);
+                        rejoue=false;
                     }
 
+                    caseCourante = monopolyI3[joueurCourant.Position];
+                    Console.WriteLine($"Il se deplace sur la case {caseCourante.Nom}.");
+                    caseCourante.AjouterVisiteur(joueurCourant);
                     Console.WriteLine($"le nombre de propriété de {joueurCourant.Nom} est de {joueurCourant.Proprietes.Length}");
                     Console.WriteLine($"son solde actuel est de {joueurCourant.Solde} $Monopoly.");
                 }while( rejoue);
