@@ -35,15 +35,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo15Delegates02", "Demo15
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo16Delegates03", "Demo16Delegates03\Demo16Delegates03.csproj", "{F36424B2-7F99-441C-B5C2-2CCA693C19EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo17Event01", "Demo17Event01\Demo17Event01.csproj", "{EA76D873-F371-4C7B-9EE5-F0E4758461DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo17Event01", "Demo17Event01\Demo17Event01.csproj", "{EA76D873-F371-4C7B-9EE5-F0E4758461DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo18Event02", "Demo18Event02\Demo18Event02.csproj", "{2EDB3CCE-9472-4E86-9E13-31F27275EF49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo18Event02", "Demo18Event02\Demo18Event02.csproj", "{2EDB3CCE-9472-4E86-9E13-31F27275EF49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo19Genericite", "Demo19Genericite\Demo19Genericite.csproj", "{62B2E8AD-F9BC-4DC8-A51D-227A88C8D9E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo19Genericite", "Demo19Genericite\Demo19Genericite.csproj", "{62B2E8AD-F9BC-4DC8-A51D-227A88C8D9E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo20Genericite02", "Demo20Genericite02\Demo20Genericite02.csproj", "{EDF940E2-8628-41E1-B980-CD4B13DD9A11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo20Genericite02", "Demo20Genericite02\Demo20Genericite02.csproj", "{EDF940E2-8628-41E1-B980-CD4B13DD9A11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo21ActionFunc", "Demo21ActionFunc\Demo21ActionFunc.csproj", "{3A8145FF-B7CA-4B42-AAEE-467F943DEDCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo21ActionFunc", "Demo21ActionFunc\Demo21ActionFunc.csproj", "{3A8145FF-B7CA-4B42-AAEE-467F943DEDCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoADO", "DemoADO\DemoADO.csproj", "{4FA0B2B8-99E3-4FCF-BC08-8CC75DCA4168}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +137,10 @@ Global
 		{3A8145FF-B7CA-4B42-AAEE-467F943DEDCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A8145FF-B7CA-4B42-AAEE-467F943DEDCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A8145FF-B7CA-4B42-AAEE-467F943DEDCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FA0B2B8-99E3-4FCF-BC08-8CC75DCA4168}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FA0B2B8-99E3-4FCF-BC08-8CC75DCA4168}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FA0B2B8-99E3-4FCF-BC08-8CC75DCA4168}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA0B2B8-99E3-4FCF-BC08-8CC75DCA4168}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

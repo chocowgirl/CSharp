@@ -39,7 +39,7 @@ namespace Demo21ActionFunc
                 Console.WriteLine($"{p.Name} : {p.Price} Euro(s)");
             }
 
-            Action<string> cw = Test 01;
+            //Action<string> cw = Test 01;
         }
         static void Test01(string message)
         {
