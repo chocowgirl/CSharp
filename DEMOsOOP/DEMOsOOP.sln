@@ -45,7 +45,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo20Genericite02", "Demo2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo21ActionFunc", "Demo21ActionFunc\Demo21ActionFunc.csproj", "{3A8145FF-B7CA-4B42-AAEE-467F943DEDCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoADO", "DemoADO\DemoADO.csproj", "{4FA0B2B8-99E3-4FCF-BC08-8CC75DCA4168}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoADO", "DemoADO\DemoADO.csproj", "{4FA0B2B8-99E3-4FCF-BC08-8CC75DCA4168}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoADO-DML", "DemoADO-DML\DemoADO-DML.csproj", "{3911BD89-A323-4CCD-8D68-C278975ECFB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +143,10 @@ Global
 		{4FA0B2B8-99E3-4FCF-BC08-8CC75DCA4168}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FA0B2B8-99E3-4FCF-BC08-8CC75DCA4168}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FA0B2B8-99E3-4FCF-BC08-8CC75DCA4168}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3911BD89-A323-4CCD-8D68-C278975ECFB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3911BD89-A323-4CCD-8D68-C278975ECFB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3911BD89-A323-4CCD-8D68-C278975ECFB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3911BD89-A323-4CCD-8D68-C278975ECFB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
