@@ -168,7 +168,7 @@ namespace DemoADO
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    command.CommandText = $"INSERT INTO student (first_name, last_name, birth_date, login, year_result, section_id, course_id) OUTPUT inserted.student_id VALUES ('{s.First_Name}', '{s.Last_Name}', '{s.Birth_Date.ToString("yyyy-MM-dd")}', '{s.Login}', {(object)s.Year_Result ?? "NULL"}, {s.Section_Id}, '{s.Course_Id}')";
+                    command.CommandText = $"INSERT INTO student (first_name, last_name, birth_date, login, year_result, section_id, course_id) OUTPUT inserted.student_id VALUES ('{s.First_Name}', '{s.Last_Name}', '{s.Birth_Date?.ToString("yyyy-MM-dd") ?? "NULL"}', '{s.Login}', {(object)s.Year_Result ?? "NULL"}, {s.Section_Id}, '{s.Course_Id}')";
                     connection.Open();
                     s.Student_Id = (int)command.ExecuteScalar();
                     connection.Close();
@@ -177,6 +177,14 @@ namespace DemoADO
             }
 
             Console.WriteLine($"L'étudiant {s.First_Name} {s.Last_Name} est bien enregistré, il a l'identifiant {s.Student_Id}.");
+
+
+            
+
+
+
+
+
         }
     }
 }

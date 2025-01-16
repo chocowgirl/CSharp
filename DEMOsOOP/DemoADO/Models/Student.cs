@@ -9,11 +9,11 @@ namespace DemoADO.Models
     internal class Student
     {
         public int Student_Id { get; set; }
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
-        public DateTime Birth_Date { get; set; }
-        public string Login { get; set; }
-        public int Section_Id { get; set; }
+        public string? First_Name { get; set; }
+        public string? Last_Name { get; set; }
+        public DateTime? Birth_Date { get; set; }
+        public string? Login { get; set; }
+        public int? Section_Id { get; set; }
         public int? Year_Result { get; set; }
         public string Course_Id { get; set; }
 
