@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+
+<head>
+    <title>Registration Page</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul style="list-style:none">
+                <li>
+                    <a href="/Home">Home</a>
+                </li>
+                <li>
+                    <a href="/Home/Contact">Contact</a>
+                </li>
+                <li>
+                    <a href="/Auth/Register">Register</a>
+                </li>
+                <li>
+                    <a href="/Auth/Login">Login</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Registration</h1>
+
+    <form method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="lastName">Last Name:</label><br />
+        <input type="text" id="lastName" name="lastName"><br>
+
+        <label for="birthday">Birthday:</label><br>
+        <input type="date" id="birthday" name="birthday"><br>
+
+        <label for="email">Email Address:</label><br />
+        <input type="email" id="email" name="email"><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br>
+
+        <label for="passwordConf">Re-enter Password:</label><br />
+        <input type="password" id="passwordConf" name="passwordConf"><br>
+
+        <br />
+        <input type="submit" />
+    </form>
+
+
+
+
+
+    @* @using (Html.BeginForm()) *@
+    @* { *@
+    @*     <div> *@
+    @*         Name: <input type="name" id="Name" value="" /> *@
+    @*     </div> *@
+    @*     <div> *@
+    @*         Last Name: <input type="lastName" id="LastName" value="" /> *@
+    @*     </div> *@
+    @*     <div> *@
+    @*         Birthday: <input type="birthday" id="Birthday" value="" /> *@
+    @*     </div> *@
+    @*     <div> *@
+    @*         Email: <input type="email" id="Email" value="" /> *@
+    @*     </div> *@
+    @*     <div> *@
+    @*         Password: <input type="password" id="Password" value="" /> *@
+    @*     </div> *@
+    @*     <div> *@
+    @*         Confirm Password: <input type="passwordConf" id="PasswordConf" value="" /> *@
+    @*     </div> *@
+    @*     <div> *@
+    @*         <button type="submit">Register</button> *@
+    @*     </div> *@
+    @* } *@
+
+    
+
+   
+</body>
+</html>

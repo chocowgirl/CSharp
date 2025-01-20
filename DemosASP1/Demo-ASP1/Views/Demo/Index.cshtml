@@ -1,0 +1,86 @@
+﻿@{
+    int nb1 = 3, nb2 = 5;
+
+    List<string> names = new List<string>
+    {
+        "Kahoula",
+        "Charifa",
+        "Jessica",
+        "Melusine",
+        "Dorothee",
+        "Jenny",
+        "Leslie",
+        "Anais",
+        "Debbie",
+        "Emilie"
+    };
+
+    string PlurielOuSingulier<T>(IEnumerable<T> values){
+        return (values.Count() > 1) ? "s" : "";
+    }
+
+    void ListerEleves1(IEnumerable<string> names){
+        @:<ul>
+        foreach (string name in names)
+        {
+            @:<li>@name</li>
+        }
+        @:</ul>
+    }
+
+    void ListerEleves2(IEnumerable<string> names){
+        <ul>
+            @{
+                foreach (string name in names)
+                {
+                    <li>@name</li>
+                }
+            }
+        </ul>
+    }
+    //The above is another way of doing the same as the function above (commented)
+}
+
+
+<!DOCTYPE html>
+<html lang="fr">
+
+
+<head>
+    <title>Demo ASP MVC : @ViewData["Title"]</title>
+</head>
+<body>
+
+
+    <h1>Demo ASP MVC</h1>
+    <h2>Index</h2>
+    <p>Par le controleur Demo, nous avons accédé à l'action Index(), qui a trouvé cette vue dans /views/demo/index.cshtml'</p>
+    <p>Il est actuellement @DateTime.Now.ToString("hh:mm:ss")</p>
+    <p>5 + 3 = @(5+3)</p>
+    <p>@nb1 + @nb2 = @(nb1 + nb2)</p>
+
+    <p>Actuellement vous êtes @names.Count() élève@(PlurielOuSingulier(names)) en classe</p>
+
+    <p>With the help of a function using the @@:</p>
+    @{ListerEleves1(names);}
+    @*When a function that is called is a void function you have to use the accolades around the line of code calling it*@
+
+    <p>Here we use the second ListerEleves function:</p>
+    @{
+        ListerEleves2(names);
+    }
+
+    <p>Without the aid of a function but with the use of iterative conditional blocks:</p>
+    @if (names.Count > 0){
+        <ul>
+            @foreach(string name in names){
+                <li>@name</li>
+            }
+        </ul>
+    }
+    else{
+        <p>No students to list!</p>
+    }
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿@{
+    int table = 0;
+    if(ViewData.ContainsKey("table")){
+        table = (int)ViewData["table"];
+    } // Here this is just idiot-proofing against other devs who might put something weird in the controller that doesn't provide "table" information
+}
+
+
+<!DOCTYPE html>
+<html lang="fr-be">
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport content=" width="device-width, initial-scale=1" />
+    <title>Table</title>
+</head>
+
+<body>
+
+    <h1>Table</h1>
+    <h2>Table de @table</h2>
+    <ul>
+        @for(int i = 1; i <= 10; i++){
+            <li>@i X @table = @(table * i)</li>
+        }
+    </ul>
+
+
+</body>
+</html>
+
