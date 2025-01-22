@@ -1,0 +1,36 @@
+﻿@using Demo_ASP1.Models
+@* @model MessageDetails  //Here is where we import the class information to be used *@
+@* The above is what we used for a simple message, before the use of an enumerable *@
+@using System.Collections.Generic
+@model IEnumerable<MessageDetails>
+
+<!DOCTYPE html>
+<html lang="fr">
+
+
+<head>
+    <title>Demo ASP MVC : @ViewData["Title"]</title>
+</head>
+<body>
+
+
+    <h1>Demo ASP MVC</h1>
+    @foreach(MessageDetails msg in Model){
+        /* <div> *@
+        @*     <p>@Model.Sender.FirstName @Model.Sender.LastName : </p> *@
+        @*     <p>(envoyé à @Model.Receiver.FirstName @Model.Receiver.LastName le @Model.SentDate.ToString("dd MM yyyy hh:mm"))</p> *@
+        @*     <p>@Model.Content</p> *@
+        @*     <p>@((Model.IsReceived? "✔️" : "✖️"))</p>  *@
+        @*     @* //The double paretheses are b/c of the ternery expression *@ *@
+        @* </div> */
+        <div>
+            <p>@msg.Sender.FirstName @msg.Sender.LastName : </p>
+            <p>(envoyé à @msg.Receiver.FirstName @msg.Receiver.LastName le @msg.SentDate.ToString("dd MM yyyy hh:mm"))</p>
+            <p>@msg.Content</p>
+            <p>@((msg.IsReceived ? "✔️" : "✖️"))</p>
+            @* //The double paretheses are b/c of the ternery expression *@
+        </div>
+    }
+
+</body>
+</html>

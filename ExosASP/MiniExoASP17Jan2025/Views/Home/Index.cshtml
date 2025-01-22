@@ -1,26 +1,46 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Dictionary<string, string> links = new Dictionary<string, string>()
+    {
+        {"Contact", "/Home/Contact"},
+        {"Register", "/Auth/Register"},
+        {"Login", "/Auth/Login"}
+    };
+
+}
+
+
+<!DOCTYPE html>
 <html lang="fr-be">
 
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport content="width="device-width, initial-scale=1" />
-    <title>Index Page</title>
+    <title>@ViewData["Title"]</title>
 </head>
 
 <body>
     <header>
         <nav>
             <ul style="list-style:none">
-                <li>
-                    <a href="/Home/Contact">Contact</a>
-                </li>
-                <li>
-                    <a href="/Auth/Register">Register</a>
-                </li>
-                <li>
-                    <a href="/Auth/Login">Login</a>
-                </li>
+                @{
+                    foreach (KeyValuePair<string, string> entry in links)
+                    {
+                        <li>
+                            <a href="@entry.Value">@entry.Key</a>
+                        </li>
+                    }
+                }
+
+                @* <li> *@
+                @*     <a href="/Home/Contact">Contact</a> *@
+                @* </li> *@
+                @* <li> *@
+                @*     <a href="/Auth/Register">Register</a> *@
+                @* </li> *@
+                @* <li> *@
+                @*     <a href="/Auth/Login">Login</a> *@
+                @* </li> *@
             </ul>
         </nav>
     </header>

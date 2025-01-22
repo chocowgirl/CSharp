@@ -3,7 +3,7 @@
 
 
 <head>
-    <title>Login Page</title>
+    <title>@ViewData["Title"]</title>
 </head>
 <body>
     <header>
@@ -26,6 +26,11 @@
     </header>
     <main>
         <h1>Login</h1>
+        @if(TempData.ContainsKey("message")){
+            <div style="width:80%; margin:0 auto; border:1px solid red; border-radius:15px; padding : 15px; color:blue;">
+                <p>@TempData["message"]</p>
+            </div>
+        }
 
         <form method="POST">
             <label for="email">Login:</label><br>
