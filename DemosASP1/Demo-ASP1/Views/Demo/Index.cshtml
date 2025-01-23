@@ -53,7 +53,17 @@
 
 
     <h1>Demo ASP MVC</h1>
+    <nav>
+        <ul>
+            <li>@Html.ActionLink("Demonstration TempData : Sauvegarde de données", "SaveData", "Demo", new{data="Valeur à sauvegarder."})</li>
+            <li>@Html.ActionLink("Demonstration TempData : Affichage de données", "ShowData")</li>
+            <li>@Html.ActionLink("Demonstration Formulaire", "FormsDemo", "Demo")</li>
+        </ul>
+    </nav>
+
     <h2>Index</h2>
+
+
     <p>Par le controleur Demo, nous avons accédé à l'action Index(), qui a trouvé cette vue dans /views/demo/index.cshtml'</p>
     <p>Il est actuellement @DateTime.Now.ToString("hh:mm:ss")</p>
     <p>5 + 3 = @(5+3)</p>

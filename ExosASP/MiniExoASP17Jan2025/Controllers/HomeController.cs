@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MiniExoASP17Jan2025.Models;
+using MiniExoASP17Jan2025.Models.Home;
 
 namespace MiniExoASP17Jan2025.Controllers
 {
@@ -22,7 +24,25 @@ namespace MiniExoASP17Jan2025.Controllers
         {
             Subtitle = "- Nous contacter";
             Title = ControllerPseudo + Subtitle;
-            return View();
+            Address i3address = new Address()
+            {
+                Street = "Rue Gaucheret",
+                Number = "88",
+                ZipCode = 1030,
+                City = "Bruxelles",
+                Country = "Belgique"
+            };
+            PhoneNumber i3phone = new PhoneNumber()
+            {
+                Number = "02 219 15 10",
+                International = "+32"
+            };
+            ContactViewModel model = new ContactViewModel()
+            {
+                Address = i3address,
+                Phone = i3phone,
+            };
+            return View(model);
         }
 
 
