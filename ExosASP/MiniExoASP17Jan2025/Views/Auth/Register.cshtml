@@ -1,9 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@using MiniExoASP17Jan2025.Models.Auth
+@model RegisterForm
+
+
+<!DOCTYPE html>
 <html lang="fr">
 
 
 <head>
     <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap-grid.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/site.css" />
 </head>
 <body>
     <header>
@@ -26,29 +32,48 @@
     </header>
     <h1>Registration</h1>
 
-    <form method="POST">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name"><br>
+    @* <form method="POST"> *@
+    @using (Html.BeginForm(FormMethod.Post, new { @class = "col-6 container-md" })){
+        @* <label for="name">Name:</label><br> *@
+        @Html.LabelFor(blah => blah.Name, new {@class = "form-label"})
+        @* <input type="text" id="name" name="name"><br> *@
+        @Html.EditorFor(blah => blah.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(blah => blah.Name, null, new { @class = "text-danger" })
 
-        <label for="lastName">Last Name:</label><br />
-        <input type="text" id="lastName" name="lastName"><br>
+        @* <label for="lastName">Last Name:</label><br /> *@
+        @Html.LabelFor(blah => blah.LastName, new { @class = "form-label" })
+        @* <input type="text" id="lastName" name="lastName"><br> *@
+        @Html.EditorFor(blah => blah.LastName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(blah => blah.LastName, null, new { @class = "text-danger" })
 
-        <label for="birthday">Birthday:</label><br>
-        <input type="date" id="birthday" name="birthday"><br>
+        @* <label for="birthday">Birthday:</label><br> *@
+        @Html.LabelFor(blah => blah.Birthday, new { @class = "form-label" })
+        @* <input type="date" id="birthday" name="birthday"><br> *@
+        @Html.EditorFor(blah => blah.Birthday, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(blah => blah.Birthday, null, new { @class = "text-danger" })
 
-        <label for="email">Email Address:</label><br />
-        <input type="email" id="email" name="email"><br>
+        @* <label for="email">Email Address:</label><br /> *@
+        @Html.LabelFor(blah => blah.Email, new { @class = "form-label" })
+        @* <input type="email" id="email" name="email"><br> *@
+        @Html.EditorFor(blah => blah.Email, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(blah => blah.Email, null, new { @class = "text-danger" })
 
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br>
+        @* <label for="password">Password:</label><br> *@
+        @Html.LabelFor(blah => blah.Password, new { @class = "form-label" })
+        @* <input type="password" id="password" name="password"><br> *@
+        @Html.EditorFor(blah => blah.Password, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(blah => blah.Password, null, new { @class = "text-danger" })
 
-        <label for="passwordConf">Re-enter Password:</label><br />
-        <input type="password" id="passwordConf" name="passwordConf"><br>
+        @* <label for="passwordConf">Re-enter Password:</label><br /> *@
+        @Html.LabelFor(blah => blah.PasswordConf, new { @class = "form-label" })
+        @* <input type="password" id="passwordConf" name="passwordConf"><br> *@
+        @Html.EditorFor(blah => blah.PasswordConf, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(blah => blah.PasswordConf, null, new { @class = "text-danger" })
 
         <br />
         <input type="submit" />
-    </form>
-
+    @* </form> *@
+    }
 
 
 
