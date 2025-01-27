@@ -9,28 +9,28 @@
 }
 
 
-<!DOCTYPE html>
-<html lang="fr-be">
+@* <!DOCTYPE html> *@
+@* <html lang="fr-be"> *@
 
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport content="width="device-width, initial-scale=1" />
-    <title>@ViewData["Title"]</title>
-</head>
+@* <head> *@
+@*     <meta charset="utf-8" /> *@
+@*     <meta name="viewport content="width="device-width, initial-scale=1" /> *@
+@*     <title>@ViewData["Title"]</title> *@
+@* </head> *@
 
-<body>
-    <header>
-        <nav>
-            <ul style="list-style:none">
-                @{
-                    foreach (KeyValuePair<string, string> entry in links)
-                    {
-                        <li>
-                            <a href="@entry.Value">@entry.Key</a>
-                        </li>
-                    }
-                }
+@* <body> *@
+    @* <header> *@
+    @*     <nav> *@
+    @*         <ul style="list-style:none"> *@
+                @* @{ *@
+                    @* foreach (KeyValuePair<string, string> entry in links) *@
+                    @* { *@
+                    @*     <li> *@
+                    @*         <a href="@entry.Value">@entry.Key</a> *@
+                    @*     </li> *@
+                @*     } *@
+                @* } *@
 
                 @* <li> *@
                 @*     <a href="/Home/Contact">Contact</a> *@
@@ -41,13 +41,13 @@
                 @* <li> *@
                 @*     <a href="/Auth/Login">Login</a> *@
                 @* </li> *@
-            </ul>
-        </nav>
-    </header>
+    @*         </ul> *@
+    @*     </nav> *@
+    @* </header> *@
     <h1>Welcome!</h1>
 
 
 
-</body>
-</html>
+@* </body> *@
+@* </html> *@
 

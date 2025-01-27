@@ -10,6 +10,7 @@
 </head>
 <body>
     <header>
+        <title>Interface 3</title>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MiniExoASP17Jan2025</a>
@@ -23,8 +24,20 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                         </li>
+                        @* <li class="nav-item"> *@
+                        @*     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> *@
+                        @* </li> *@
+                        @if(!TempData.ContainsKey("logged"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+                                </li>
+                            }
                     </ul>
                 </div>
             </div>
@@ -37,6 +50,7 @@
     </div>
 
     <footer class="border-top footer text-muted">
+        <div class="container">Prenom Nom - Interface 3 Bruxelles</div>
         <div class="container">
             &copy; 2025 - MiniExoASP17Jan2025 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

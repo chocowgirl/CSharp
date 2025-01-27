@@ -46,6 +46,8 @@ namespace MiniExoASP17Jan2025.Handlers
             }
         }
 
+
+
         //private static void RegexpValidation(this ModelStateDictionary modelState, string value, string name, string pattern, string errorMessage)
         //{
         //    if (value is not null && !Regex.IsMatch(value, pattern))

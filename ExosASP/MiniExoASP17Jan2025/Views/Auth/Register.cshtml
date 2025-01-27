@@ -1,35 +1,39 @@
-﻿@using MiniExoASP17Jan2025.Models.Auth
+﻿@{
+    Layout = "_LayoutLite";
+    //_LayoutLite references the _LayoutLite.cshtml that is indexer the shared views folder
+}
+@using MiniExoASP17Jan2025.Models.Auth
 @model RegisterForm
 
 
-<!DOCTYPE html>
-<html lang="fr">
+@* <!DOCTYPE html> *@
+@* <html lang="fr"> *@
 
 
-<head>
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap-grid.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/site.css" />
-</head>
-<body>
-    <header>
-        <nav>
-            <ul style="list-style:none">
-                <li>
-                    <a href="/Home">Home</a>
-                </li>
-                <li>
-                    <a href="/Home/Contact">Contact</a>
-                </li>
-                <li>
-                    <a href="/Auth/Register">Register</a>
-                </li>
-                <li>
-                    <a href="/Auth/Login">Login</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+@* <head> *@
+@*     <title>@ViewData["Title"]</title> *@
+@*     <link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap-grid.min.css"/> *@
+@*     <link rel="stylesheet" type="text/css" href="/css/site.css" /> *@
+@* </head> *@
+@* <body> *@
+@*     <header> *@
+@*         <nav> *@
+@*             <ul style="list-style:none"> *@
+@*                 <li> *@
+@*                     <a href="/Home">Home</a> *@
+@*                 </li> *@
+@*                 <li> *@
+@*                     <a href="/Home/Contact">Contact</a> *@
+@*                 </li> *@
+@*                 <li> *@
+@*                     <a href="/Auth/Register">Register</a> *@
+@*                 </li> *@
+@*                 <li> *@
+@*                     <a href="/Auth/Login">Login</a> *@
+@*                 </li> *@
+@*             </ul> *@
+@*         </nav> *@
+@*     </header> *@
     <h1>Registration</h1>
 
     @* <form method="POST"> *@
@@ -106,5 +110,5 @@
     
 
    
-</body>
-</html>
+@* </body> *@
+@* </html> *@

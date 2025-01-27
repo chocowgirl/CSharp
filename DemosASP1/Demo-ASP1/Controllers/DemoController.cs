@@ -189,5 +189,10 @@ namespace Demo_ASP1.Controllers
             }
         }
 
+        public IActionResult DLayout()
+        {
+            return View();
+        }
+
     }
 }

@@ -25,6 +25,7 @@ namespace MiniExoASP17Jan2025.Controllers
             return RedirectToAction("Register");
         }
 
+        //The below allows the display of the empty form to login
         public IActionResult Login()
         {
             Subtitle = "- Se connecter";
@@ -32,6 +33,40 @@ namespace MiniExoASP17Jan2025.Controllers
             return View();
         }
 
+        //*****The below allows us to Post the login form infos and treat (possible) errors entered.
+        [HttpPost("Auth/Login")]
+        public IActionResult Login(LoginForm form)
+        {
+            Subtitle = "- Se connecter";
+            Title += Subtitle;
+
+            //if (TempData.ContainsKey("message"))
+            //{
+            //    return RedirectToAction(nameof(Login));
+            //}
+            //else
+            //{
+            //    TempData["message"] = "Vous etes maintenant enregistré!";
+            //    return View();
+            //}
+            try
+            {
+                //Here we do the checks that weren't simple to add into the Model
+
+
+
+                if (!ModelState.IsValid) throw new ArgumentException();
+                //Envois des informations en DB
+                TempData["message"] = "You are now logged in";
+                TempData["logged"] = true;
+                return RedirectToAction(nameof(Index),"Home");
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+        }
 
         //*****The below allows us to show the empty form (html view of the form).
         [HttpGet("Auth/Register")]

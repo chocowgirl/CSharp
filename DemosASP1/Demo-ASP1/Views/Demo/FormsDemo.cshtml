@@ -1,17 +1,27 @@
 ﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
 @using Demo_ASP1.Models.Demo
 @model FormsDemoForm
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-<!DOCTYPE html>
-<html lang="fr">
+@{
+    List<SelectListItem> titleItems = new List<SelectListItem>(){
+        new SelectListItem() {Value = "none", Text="No Title"},
+        new SelectListItem() {Value = "mme", Text="Mme"},
+        new SelectListItem() {Value = "mr", Text="Mr"},
+        new SelectListItem() {Value = "dr", Text="Dr"},
+    };
+}
+
+@* <!DOCTYPE html> *@
+@* <html lang="fr"> *@
 
 
-<head>
-    <title>Demo ASP MVC : @ViewData["Title"]</title>
-    <link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/site.css" />
-</head>
-<body>
+@* <head> *@
+@*     <title>Demo ASP MVC : @ViewData["Title"]</title> *@
+@*     <link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.min.css"/> *@
+@*     <link rel="stylesheet" type="text/css" href="/css/site.css" /> *@
+@* </head> *@
+@* <body> *@
 
 
     <h1>Demo ASP MVC</h1>
@@ -20,7 +30,7 @@
             <p style="color:red">@TempData["errorMessage"]</p>
         </div>
     }
-    @if(!ViewContext.ModelState.IsValid){
+    @* @if(!ViewContext.ModelState.IsValid){ *@
         @* <div style="background-color : yellow"> *@
         @*     <p style="color:red">Votre formulaire contient @ViewContext.ModelState.ErrorCount erreurs:</p> *@
         @*     <ul> *@
@@ -40,16 +50,18 @@
         @*     </ul> *@
         @* </div> *@
         @* By putting the validation summary to true instead of false we erase the report given by the below code *@
-        @Html.ValidationSummary(true, $"Votre formulaire contient {ViewContext.ModelState.ErrorCount} erreurs:", new {@class = "alert alert-danger", style = "width : 75%; margin: 0 auto"})
-    }
+    @*     @Html.ValidationSummary(true, $"Votre formulaire contient {ViewContext.ModelState.ErrorCount} erreurs:", new {@class = "alert alert-danger", style = "width : 75%; margin: 0 auto"}) *@
+    @* } *@
+    <div asp-validation-summary="All" class="alert alert-danger" style="width : 75%; margin: 0 auto">Votre formulaire contient @ViewContext.ModelState.ErrorCount erreurs: </div>
     <h2>Demonstration de formulaires</h2>
     <div class="row">
-        @* <form method="post" class="col-6 container-md"> *@
-            @using (Html.BeginForm(FormMethod.Post, new{@class ="col-6 container-md"}))
-            {
+        <form method="post" class="col-6 container-md" asp-action="FormsDemo" asp-controller="Demo">
+            @* @using (Html.BeginForm(FormMethod.Post, new{@class ="col-6 container-md"})) *@
+            @* { *@
             <div class=" mb-3">
                 @* <label for="title">Title:</label> *@
-                @Html.LabelFor(boo => boo.Title)
+                @* @Html.LabelFor(boo => boo.Title) *@
+                <label asp-for="Title" class="form-label"></label>
                 @* <select name="title"> *@
                 @*     <option value="none">No title</option> *@
                 @*     <option value="mme">Mme</option> *@
@@ -57,20 +69,26 @@
                 @*     <option value="dr">Dr</option> *@
                 @* </select> *@
                 @* <div class="dropdown"> *@
-                    @Html.DropDownListFor(boo => boo.Title, new List<SelectListItem>(){
-                        new SelectListItem() {Value = "none", Text="No Title"},
-                        new SelectListItem() {Value = "mme", Text="Mme"},
-                        new SelectListItem() {Value = "mr", Text="Mr"},
-                        new SelectListItem() {Value = "dr", Text="Dr"},
-                    }, null, new {@class ="form-select"})
+                    @* @Html.DropDownListFor(boo => boo.Title, new List<SelectListItem>(){ *@
+                    @*     new SelectListItem() {Value = "none", Text="No Title"}, *@
+                    @*     new SelectListItem() {Value = "mme", Text="Mme"}, *@
+                    @*     new SelectListItem() {Value = "mr", Text="Mr"}, *@
+                    @*     new SelectListItem() {Value = "dr", Text="Dr"}, *@
+                    @* }, null, new {@class ="form-select"}) *@
+                @* ***The below in combination with the definition (at top) of titleItems does the job of the above htmldropdownlistcode *@
+                <select asp-for="Title" asp-items="titleItems" class="form-select"></select>
                 @* </div> *@
-                @Html.ValidationMessageFor(boo => boo.Title, null, new {@class = "text-danger"})
+                @* @Html.ValidationMessageFor(boo => boo.Title, null, new {@class = "text-danger"}) *@
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 @* <label class="form-label" for="firstName>">Prenom</label> *@
-                @Html.LabelFor(boo => boo.FirstName)
+                @* @Html.LabelFor(boo => boo.FirstName) *@
+                @* *****The below line does the above line *@
+                <label asp-for="FirstName" class="form-label"></label>
                 @* <input id="firstName" name="firstName" type="text" class="form-control" /> *@
-                @Html.EditorFor(boo => boo.FirstName, new{htmlAttributes = new{@class = "form-control"}})
+                @* @Html.EditorFor(boo => boo.FirstName, new{htmlAttributes = new{@class = "form-control"}}) *@
+                <input asp-for="FirstName" class="form-control" />
                 @* NOTE : if you want to add an html attribute to an Html editor for a form you have to do the above *@
                 @* @if(ViewContext.ModelState.ContainsKey("firstName")) *@
                 @* { *@
@@ -81,13 +99,16 @@
                 @*     } *@
                 @* } *@
                 @* The below line replaces the above commented lines *@
-                @Html.ValidationMessageFor(m => m.FirstName, null, new {@class = "text-danger" })
+                @* @Html.ValidationMessageFor(m => m.FirstName, null, new {@class = "text-danger" }) *@
+                <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 @* <label class="form-label" for="lastName>">Nom</label> *@
-                @Html.LabelFor(boo => boo.LastName)
+                @* @Html.LabelFor(boo => boo.LastName) *@
+                <label asp-for="LastName" class="form-label"></label>
                 @* <input id="lastName" name="lastName" type="text" class="form-control" /> *@
-                @Html.EditorFor(boo => boo.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @* @Html.EditorFor(boo => boo.LastName, new { htmlAttributes = new { @class = "form-control" } }) *@
+                <input asp-for="LastName" class="form-control" />
                 @* @if (ViewContext.ModelState.ContainsKey("lastName")) *@
                 @* { *@
                 @*     @foreach (ModelError error in ViewContext.ModelState["lastName"].Errors) *@
@@ -96,13 +117,16 @@
                 @*     } *@
                 @* } *@
                 @* The below line replaces the above commented lines *@
-                @Html.ValidationMessageFor(m => m.LastName, null, new{ @class ="text-danger"})
+                @* @Html.ValidationMessageFor(m => m.LastName, null, new{ @class ="text-danger"}) *@
+                <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 @* <label class="form-label" for="birthDate>">Date de naissance</label> *@
-                @Html.LabelFor(boo => boo.BirthDate)
+                @* @Html.LabelFor(boo => boo.BirthDate) *@
+                <label asp-for="BirthDate" class="form-label"></label>
                 @* <input id="birthDate" name="birthDate" type="date" class="form-control" /> *@
-                @Html.EditorFor(boo => boo.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+                @* @Html.EditorFor(boo => boo.BirthDate, new { htmlAttributes = new { @class = "form-control" } }) *@
+                <input asp-for="BirthDate" class="form-control" />
                 @* @if (ViewContext.ModelState.ContainsKey("firstName")) *@
                 @* { *@
                 @*     @foreach (ModelError error in ViewContext.ModelState["birthDate"].Errors) *@
@@ -111,19 +135,22 @@
                 @*     } *@
                 @* } *@
                 @* The below line replaces the above commented lines *@
-                @Html.ValidationMessageFor(m => m.BirthDate, "Le champ 'date de naissance' est invalide", new { @class = "text-danger" })
+                @* @Html.ValidationMessageFor(m => m.BirthDate, "Le champ 'date de naissance' est invalide", new { @class = "text-danger" }) *@
+                <span asp-validation-for="BirthDate" class="text-danger">"Le champ 'date de naissance' est invalide"</span>
             </div>
             <div class="btn-group">
                 <button type="submit" class="btn btn-success">Enregistrer</button>
                 <button type="reset" class="btn btn-warning">Vider formulaire</button>
                 @* <a href="/Demo/" class="btn btn-danger">Revenir en arrière</a> *@
                 @* The below line does the same as the above line *@
-                @Html.ActionLink("Revenir en arrière", "Index", "Demo", null, new{ @class="btn btn-danger"})
+                @* @Html.ActionLink("Revenir en arrière", "Index", "Demo", null, new{ @class="btn btn-danger"}) *@
+                @* *******The below line does the same as the above line *@
+                <a asp-controller="Demo" asp-action="Index" class="btn btn-danger">Revenir en arrière</a>
             </div>
-        }
-        @* </form> *@
+        @* } *@
+        </form>
     </div>
 
 
-</body>
-</html>
+@* </body> *@
+@* </html> *@
