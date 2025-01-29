@@ -45,7 +45,12 @@ namespace Demo_ASP1.Controllers
             }
         };
 
-
+        private static List<UserDetails> _userList = new List<UserDetails>()
+        {
+                new UserDetails() {UserId = 1, FirstName = "John", LastName = "Lennon", Email = "j.lennon@beatles.uk"},
+                new UserDetails() { UserId = 2, FirstName= "Freddy", LastName = "Mercury", Email = "f.mercury@queen.uk"},
+                new UserDetails() { UserId = 3, FirstName= "David", LastName = "Bowie", Email = "d.bowie@music.uk"}
+        };
 
 
         public IActionResult Index()
@@ -194,5 +199,91 @@ namespace Demo_ASP1.Controllers
             return View();
         }
 
+
+        public IActionResult UserList()
+        {
+            IEnumerable<UserListItem> model = _userList.Select(udetails => new UserListItem() { UserId = udetails.UserId, FirstName = udetails.FirstName, LastName = udetails.LastName });
+            return View(model);
+            
+        }
+
+
+
+        //to create the creation form
+        public IActionResult UserCreate()
+        {
+            return View();
+        }
+
+        //to treat form data
+        [HttpPost]
+        public IActionResult UserCreate(UserCreateForm form)
+        {
+            try
+            {
+                if (!ModelState.IsValid) throw new ArgumentException();
+                int id = _userList.Max(udetails => udetails.UserId);
+                _userList.Add(
+                    new UserDetails()
+                    { UserId = id +1, FirstName = form.FirstName, LastName = form.LastName, Email = form.Email }
+                );
+                return RedirectToAction(nameof(UserDetails), new { id = id + 1 });
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
+
+        }
+
+
+        public IActionResult UserDetails(int id)
+        {
+            UserDetails? model = _userList.Where(udetails => udetails.UserId == id).SingleOrDefault();
+            if (model == null) return RedirectToAction(nameof(UserList));
+            return View(model);
+        }
+
+        //To show the useredit form with userdetails in it
+        public IActionResult UserEdit(int id)
+        {
+            try
+            {
+                UserDetails? user = _userList.Where(ud => ud.UserId == id).SingleOrDefault();
+                if(user is null) throw new ArgumentOutOfRangeException(nameof(id));
+                UserEditForm model = new UserEditForm()
+                {
+                    FirstName= user.FirstName,
+                    LastName= user.LastName
+                };
+                return View(model);
+            }
+            catch 
+            {
+                return RedirectToAction(nameof(UserList));
+            }
+        }
+
+
+        [HttpPost]
+        public IActionResult UserEdit(int id, UserEditForm form)
+        {
+            try
+            {
+                UserDetails? user = _userList.Where(ud => ud.UserId == id).SingleOrDefault();
+                if (!ModelState.IsValid) throw new ArgumentException();
+                user.FirstName = form.FirstName;
+                user.LastName = form.LastName;
+                return RedirectToAction(nameof(UserDetails), new { id = id });
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                return RedirectToAction(nameof(UserList));
+            }
+            catch (Exception)
+            {
+                return RedirectToAction(nameof(UserEdit), new {id = id});
+            }
+        }
     }
 }
