@@ -22,6 +22,24 @@ namespace BLL.Entities
         }
 
 
+        public User(string first_Name, string last_Name, string email)
+        {
+            First_Name = first_Name;
+            Last_Name = last_Name;
+            Email = email;
+        }
+
+
+        public User(string first_Name, string last_Name, string email, string password)
+        {
+            First_Name = first_Name;
+            Last_Name = last_Name;
+            Email = email;
+            Password = password;
+        }
+
+
+        //usually good practice to put the order of the overloaded parameters in the same order as the basic parameters.  Here b/c there are no defaults, it doesn't cause a problem.
         public User(Guid user_Id, string first_Name, string last_Name, string email, string password, DateTime createdAt, DateTime? disabledAt)
         {
             User_Id = user_Id;

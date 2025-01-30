@@ -7,4 +7,5 @@ BEGIN
 		FROM [User]
 		WHERE	[Email] = @email
 			AND [Password] = [dbo].[SF_SaltAndHash](@password,[Salt])
+
 END

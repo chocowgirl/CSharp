@@ -2,14 +2,14 @@
 using BLL.Mappers;
 using Common.Repositories;
 using DAL.Services;
+//using D = DAL.Services;
+//The above line creates an alias (D) for DAL.Services
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using D = DAL.Entities;
-//using D = DAL.Services;
-//The above line creates an alias (D) for DAL.Services
 
 namespace BLL.Services
 {
