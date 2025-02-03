@@ -9,20 +9,24 @@ using DAL.Entities;
 using DAL.Mappers;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using Microsoft.Extensions.Configuration;
 
 
 
 namespace DAL.Services
 {
 
-    public class CocktailService : ICocktailRepository<Cocktail>
+    public class CocktailService : BaseService, ICocktailRepository<Cocktail>
     {
-        private const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=WAD24-DemoASP-DB;Integrated Security=True;";
+        public CocktailService(IConfiguration config) : base(config, "Main-DB") { }
+        //Here the child class fills in the obligations of the parent
+
+        //private const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=WAD24-DemoASP-DB;Integrated Security=True;";
 
         //below code to recuperate the DB and get the list of all drinks
         public IEnumerable<Cocktail> Get()
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
@@ -43,7 +47,7 @@ namespace DAL.Services
         //code to get Cocktail by ID
         public Cocktail Get(Guid cocktail_id)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
@@ -69,7 +73,7 @@ namespace DAL.Services
         //Code to insert (create) a Cocktail
         public Guid Insert(Cocktail cocktail)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
@@ -78,7 +82,7 @@ namespace DAL.Services
                     command.Parameters.AddWithValue(nameof(Cocktail.Name), cocktail.Name);
                     command.Parameters.AddWithValue(nameof(Cocktail.Description), (object?)cocktail.Description ?? DBNull.Value);
                     command.Parameters.AddWithValue(nameof(Cocktail.Instructions), cocktail.Instructions);
-                    command.Parameters.AddWithValue(nameof(Cocktail.CreatedBy), (object?)cocktail.CreatedBy ?? DBNull.Value);
+                    command.Parameters.AddWithValue("user_id", (object?)cocktail.CreatedBy ?? DBNull.Value);
                     connection.Open();
                     return (Guid)command.ExecuteScalar();
                 }
@@ -88,7 +92,7 @@ namespace DAL.Services
         //code to update a cocktail
         public void Update(Guid cocktail_id, Cocktail cocktail)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
@@ -107,7 +111,7 @@ namespace DAL.Services
         //Code to delete a cocktail
         public void Delete(Guid cocktail_id)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {

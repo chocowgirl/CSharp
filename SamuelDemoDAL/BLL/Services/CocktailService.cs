@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
 using BLL.Entities;
-//using BLL.Mappers;
+using BLL.Mappers;
+//using DAL.Entities;
 
 //using DAL.Services;
 //using D = DAL.Services;
@@ -16,34 +15,44 @@ using BLL.Entities;
 //using D = DAL.Entities;
 
 
-
+//B:c you are in the 
 namespace BLL.Services
 {
-    public class CocktailService : ICocktailRepository<Cocktail>
+    public class CocktailService : ICocktailRepository<BLL.Entities.Cocktail>
     {
-        public void Delete(Guid id)
+        private ICocktailRepository<DAL.Entities.Cocktail> _service;
+        //Above we call the DAL.Entities service because we'll need it to retrieve and then convert to BLL
+
+        public CocktailService(ICocktailRepository<DAL.Entities.Cocktail> cocktailService)
         {
-            throw new NotImplementedException();
+            _service = cocktailService;
         }
 
-        public IEnumerable<Cocktail> Get()
+        public IEnumerable<BLL.Entities.Cocktail> Get()
         {
-            throw new NotImplementedException();
+            return _service.Get().Select(dal => dal.ToBLL());
+            //throw new NotImplementedException();
         }
 
-        public Cocktail Get(Guid id)
+        public BLL.Entities.Cocktail Get(Guid cocktail_id)
         {
-            throw new NotImplementedException();
+            return _service.Get(cocktail_id).ToBLL();
         }
 
-        public Guid Insert(Cocktail cocktail)
+        public Guid Insert(BLL.Entities.Cocktail cocktail)
         {
-            throw new NotImplementedException();
+            return _service.Insert(cocktail.ToDAL());
         }
 
-        public void Update(Guid id, Cocktail cocktail)
+        public void Delete(Guid cocktail_id)
         {
-            throw new NotImplementedException();
+            _service.Delete(cocktail_id);
+        }
+
+
+        public void Update(Guid cocktail_id, BLL.Entities.Cocktail cocktail)
+        {
+            _service.Update(cocktail_id, cocktail.ToDAL());
         }
     }
 }

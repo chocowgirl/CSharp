@@ -16,7 +16,8 @@ namespace ASP_MVC
             builder.Services.AddScoped<IUserRepository<DAL.Entities.User>, DAL.Services.UserService>();
             //The below line can be used to place the program in connection with a fake DB in case of DB maintenance dB or dev of features in the program testing on fakeDB
             //builder.Services.AddScoped<IUserRepository<DAL.Entities.User>, FakeDAL.Services.UserService>();
-
+            builder.Services.AddScoped<ICocktailRepository<BLL.Entities.Cocktail>, BLL.Services.CocktailService>();
+            builder.Services.AddScoped<ICocktailRepository<DAL.Entities.Cocktail>, DAL.Services.CocktailService>();
 
             var app = builder.Build();
 

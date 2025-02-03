@@ -2,6 +2,7 @@
 using DAL.Entities;
 using DAL.Mappers;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,15 +12,16 @@ using System.Threading.Tasks;
 
 namespace DAL.Services
 {
-    public class UserService : IUserRepository<User>
+    public class UserService : BaseService, IUserRepository<User>
     {
-        private const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=WAD24-DemoASP-DB;Integrated Security=True;";
+        public UserService(IConfiguration config) : base(config, "Main-DB") { }
+        //Here the child class fills in the obligations of the parent
 
-
+ 
         //below code to recuperate the DB and get the list of all users that are active
         public IEnumerable<User> Get()
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString)) {
+            using (SqlConnection connection = new SqlConnection(_connectionString)) {
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandText = "SP_User_GetAllActive";
@@ -40,7 +42,7 @@ namespace DAL.Services
         //to do the same but get a single user by their ID
         public User Get(Guid user_id)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
@@ -66,7 +68,7 @@ namespace DAL.Services
 
         public Guid Insert(User user)
         {
-            using(SqlConnection connection = new SqlConnection(ConnectionString))
+            using(SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using(SqlCommand command = connection.CreateCommand())
                 {
@@ -85,7 +87,7 @@ namespace DAL.Services
 
         public void Update(Guid user_id, User user)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
@@ -104,7 +106,7 @@ namespace DAL.Services
 
         public void Delete(Guid user_id)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
@@ -120,7 +122,7 @@ namespace DAL.Services
 
         public Guid CheckPassword(string email, string password)
         {
-            using(SqlConnection connection = new SqlConnection(ConnectionString))
+            using(SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using(SqlCommand command = connection.CreateCommand())
                 {

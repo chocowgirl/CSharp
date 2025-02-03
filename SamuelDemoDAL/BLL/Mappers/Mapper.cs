@@ -19,7 +19,7 @@ namespace BLL.Mappers
 
         public static D.User ToDAL(this User user)
         {
-            if(user is null) throw new ArgumentNullException( nameof(user));
+            if(user is null) throw new ArgumentNullException(nameof(user));
             return new D.User()
             {
                 User_Id = user.User_Id,
@@ -29,6 +29,26 @@ namespace BLL.Mappers
                 Password = user.Password,
                 CreatedAt = user.CreatedAt,
                 DisabledAt = (user.IsDisabled) ? new DateTime() : null
+            };
+        }
+
+        public static Cocktail ToBLL(this D.Cocktail cocktail)
+        {
+            if(cocktail is null) throw new ArgumentNullException(nameof(cocktail));
+            return new Cocktail(cocktail.Cocktail_Id, cocktail.Name, cocktail.Description, cocktail.Instructions, DateOnly.FromDateTime(cocktail.CreatedAt), cocktail.CreatedBy);
+        }
+
+        public static D.Cocktail ToDAL(this Cocktail cocktail)
+        {
+            if (cocktail is null) throw new ArgumentNullException(nameof(cocktail));
+            return new D.Cocktail()
+            {
+                Cocktail_Id = cocktail.Cocktail_Id,
+                Name = cocktail.Name,
+                Description = cocktail.Description,
+                Instructions = cocktail.Instructions,
+                CreatedAt = cocktail.CreatedAt.ToDateTime(TimeOnly.MinValue),
+                CreatedBy = cocktail.CreatedBy
             };
         }
     }
