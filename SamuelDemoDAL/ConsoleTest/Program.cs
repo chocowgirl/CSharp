@@ -1,10 +1,10 @@
 ﻿using Common.Repositories;
-//using DAL.Entities;
-//using DAL.Services;
+using DAL.Entities;
+using DAL.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using BLL.Entities;
-using BLL.Services;
+//using BLL.Entities;
+//using BLL.Services;
 
 namespace ConsoleTest
 {
