@@ -3,6 +3,7 @@ using Common.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using WebAPI.Mapper;
+using WebAPI.Models;
 using WebAPI.Models.User;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -39,10 +40,21 @@ namespace WebAPI.Controllers
 
         // GET api/<UserController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        [ProducesResponseType<UserDTO>(200)]
+        [ProducesResponseType(500)]
+        public IActionResult Get(Guid id)
         {
-            return "value";
+            UserDTO model = _userService.Get(id).ToDTO();
+            if (model is not null)
+            {
+                return Ok(model);
+            }
+            return NotFound(); // returns a 404 code
+            //return StatusCode(404); //same as above said differently
         }
+
+        //**********left off here
+
 
         // POST api/<UserController>
         [HttpPost]
