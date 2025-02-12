@@ -17,5 +17,18 @@ namespace WebAPI.Mapper
                 IsDisabled = user.IsDisabled
             };
         }
+
+        public static User ToBLL(this UserPostDTO model)
+        {
+            if (model is null) throw new ArgumentNullException(nameof(model));
+            return new User(model.First_Name, model.Last_Name, model.Email, model.Password);
+        }
+
+        public static User ToBLL(this UserPutDTO model)
+        {
+            if (model is null) throw new ArgumentNullException(nameof(model));
+            return new User(model.First_Name, model.Last_Name, model.Email);
+        }
+
     }
 }
